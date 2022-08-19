@@ -7,7 +7,7 @@ import os
 import json
 import requests
 
-load_dotenv("getenv.env")
+load_dotenv(".env")
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
 FLASK_KEY = os.getenv("FLASK_KEY")
 
