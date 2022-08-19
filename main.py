@@ -2,16 +2,14 @@ from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from playlist_timemachine import PlaylistForm, PlaylistTimemachine
 from recipe_finder import RecipeSearchForm, GetRecipeList
-from boto.s3.connection import S3Connection
+from dotenv import load_dotenv
 import os
 import json
 import requests
 
-s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
-
-# SPOONACULAR_API_KEY = S3Connection(os.environ["SPOONACULAR_API_KEY"])
-# FLASK_KEY = S3Connection(os.environ["FLASK_KEY"])
-
+load_dotenv(".env")
+SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
+FLASK_KEY = os.getenv("FLASK_KEY")
 
 # Setup flask app
 app = Flask(__name__)
