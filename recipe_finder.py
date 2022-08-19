@@ -23,6 +23,7 @@ class RecipeSearchForm(FlaskForm):
 class GetRecipeList():
     def __init__(self, ingredients, diet, allergies, meal_type):
         # Params and headers for spoonacular API
+        print(SPOONACULAR_API_KEY)
         header = {
             "x-api-key": SPOONACULAR_API_KEY
         }
