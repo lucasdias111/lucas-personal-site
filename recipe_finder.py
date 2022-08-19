@@ -5,7 +5,9 @@ from wtforms.validators import DataRequired
 import os
 from boto.s3.connection import S3Connection
 
-SPOONACULAR_API_KEY = S3Connection(os.environ["SPOONACULAR_API_KEY"])
+# s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
+# SPOONACULAR_API_KEY = S3Connection(os.environ["SPOONACULAR_API_KEY"])
 
 class RecipeSearchForm(FlaskForm):
     diet = SelectField('Veggie/Vegan', choices=["None", "Vegetarian", "Vegan", "Pescetarian"])

@@ -7,9 +7,10 @@ import os
 import json
 import requests
 
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
-SPOONACULAR_API_KEY = S3Connection(os.environ["SPOONACULAR_API_KEY"])
-FLASK_KEY = S3Connection(os.environ["FLASK_KEY"])
+# SPOONACULAR_API_KEY = S3Connection(os.environ["SPOONACULAR_API_KEY"])
+# FLASK_KEY = S3Connection(os.environ["FLASK_KEY"])
 
 
 # Setup flask app

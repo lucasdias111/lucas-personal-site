@@ -8,9 +8,11 @@ import datetime as dt
 import os
 from boto.s3.connection import S3Connection
 
+# s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
 # Spotify constants setup
-CLIENT_ID = S3Connection(os.environ["SPOTIFY_CLIENT_ID"])
-CLIENT_SECRET = S3Connection(os.environ["SPOTIFY_CLIENT_SECRET"])
+# CLIENT_ID = S3Connection(os.environ["SPOTIFY_CLIENT_ID"])
+# CLIENT_SECRET = S3Connection(os.environ["SPOTIFY_CLIENT_SECRET"])
 REDIRECT_URI = "http://example.com"
 
 # Lists for WTForms
