@@ -1,0 +1,89 @@
+body {
+    background-color: #C1D5A4;
+}
+
+.form-container {
+    width: 50%;
+    background-color: rgb(94, 117, 93);
+    padding: 2%;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: right;
+    color: #AC4425;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 4rem;
+}
+
+h2 {
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+.fa-kitchen-set {
+    text-align: left;
+    color: #AC4425;
+}
+
+.title-container {
+    padding: 5% 0%;
+}
+
+/* Ingredients list */
+
+#ingredients-list {
+    padding: 2%;
+    margin-top: 2%;
+    min-height: 5rem;
+    background-color: #DCD7C9;
+    border-radius: 5px;
+}
+
+#ingredients-list li {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 1%;
+    border-radius: 5px;
+    margin-top: 1%;
+}
+
+
+.form-floating {
+    padding: 1% 1%;
+}
+
+/* Results */
+
+.results-list {
+    padding: 3% 20%;
+}
+
+.result-entry {
+    padding: 2% 2%;
+    
+}
+
+.card-body {
+    background-color: #AC4425;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-img-top {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-title {
+    color: #fff;
+}
+
+.back-btn {
+    margin-top: .5%;
+    margin-left: .5%;
+}
+
+.row {
+    width: 100%;
+}

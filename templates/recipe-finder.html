@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<head>
+    <link href="/static/css/recipe-styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <a href=" {{ url_for('home') }} " type="button" class="btn btn-sm btn-outline-dark back-btn"><i class="fa-solid fa-arrow-left"></i> Back to frontpage</a>
+
+    <div class="container-fluid title-container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <h1>Recipe <br> Finder</h1>
+            </div>
+            <div class="col-auto">
+                <i class="fa-solid fa-kitchen-set fa-9x"></i>
+            </div>
+        </div>
+        </div>
+
+
+
+
+        <div class="container-fluid form-container mb-3">
+            <form method="POST" action="" name="recipeForm" class="form" onsubmit="sendUserInfo()" id="recipe-form">
+
+                <div class="row">
+                    <div class="col-lg-4 form-floating">
+                        {{ form.diet(class_="form-select", autocomplete="off") }}
+                        <label class="placeholder-text" for="fname">Diet</label>
+                    </div>
+                    <div class="col-lg-4 form-floating">
+                        {{ form.allergies(class_="form-select", autocomplete="off") }}
+                        <label class="placeholder-text" for="fname">Allergies</label>
+                    </div>
+                    <div class="col-lg-4 form-floating">
+                        {{ form.meal_type(class_="form-select", autocomplete="off") }}
+                        <label class="placeholder-text" for="fname">Meal Type</label>
+                    </div>
+                </div>
+
+                <div class="row ingredients-row">
+                    <div class="col-12 form-floating input-group">
+                        {{ form.ingredients(class_="form-control", autocomplete="off") }}
+                        <label class="placeholder-text" for="fname">Enter your ingredients here one at a time...</label>
+                        <button class="submit btn btn-outline-light" type="button" id="button-addon2"
+                            onclick="return validateForm()">Add Ingredient</button>
+                    </div>
+                </div>
+
+                <ul id="ingredients-list">
+                </ul>
+
+                <div class="row ingredients-row">
+                    <div class="col-lg-12 form-floating">
+                        {{ form.send(class_="submit btn btn-warning", type="submit") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div>
+        </div>
+
+        {% if results != None %}
+        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 results-list justify-content-center">
+            {% for entry in results %}
+            <div class="col result-entry">
+                <div class="card">
+                    <img src="{{ entry['image'] }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ entry['title'] }}</h5>
+                        <a href=" {{ url_for('show_recipe', id=entry['id']) }} " class="btn btn-outline-light btn-sm">Go to recipe</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if results == [] %}
+        <h2> No Results </h2>
+        {% endif %}
+
+        <script src="/static/js/recipe-finder.js"></script>
+
+</body>
+
+</html>

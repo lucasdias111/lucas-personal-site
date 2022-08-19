@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<head>
+    <link href="/static/css/playlist-styles.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <section class="main">
+        <div class="container-fluid header">
+            <a href=" {{ url_for('home') }} " type="button" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-arrow-left"></i> Back to frontpage</a>
+            <h1>Playlist Timemachine</h1>
+        </div>
+        <div class="container-fluid prompt-text">
+            <h4>Enter a date to generate a playlist with the top songs from that date!</h4>
+        </div>
+        <div class="container-fluid form-container">
+            <form class="form" method="post">
+                <div class="form-row align-items-center">
+                    <div class="form-group col-lg-12 col-md-1">
+                        {{ form.month(class_="btn btn-outline-dark") }}
+                        {{ form.day(class_="btn btn-outline-dark") }}
+                        {{ form.year(class_="btn btn-outline-dark") }}
+                    </div>
+                    <div class="form-group col-auto submit-btn">
+                        {{ form.submit(class_="btn btn-outline-dark", onclick="Spinner()") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div class="playlist">
+            {% if playlist %}
+            <iframe style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/{{playlist}}?utm_source=generator" width="100%"
+                height="380" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            {% endif %}
+        </div>
+
+    </section>
+
+    <script>
+        function Spinner() {
+            document.getElementsByClassName("spinner-border")[0].style.display = "block";
+            document.getElementsByClassName("d-flex")[0].style.marginTop = "5%";
+        }
+    </script>
+</body>
+
+</html>

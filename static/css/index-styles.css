@@ -1,0 +1,118 @@
+body {
+    background-color: #ebf0ed;
+}
+
+/* Navbar */
+
+.navbar {
+    background-color: #94B49F;
+    padding: .5% 20%;
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
+}
+
+.navbar-container {
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+/* Title */
+
+
+.title-container {
+    height: 100%;
+    padding: 5% 0%;
+    display: flex;
+    align-items: center;
+}
+
+.title-col {
+    margin: 0 auto;
+    padding-left: 0%;
+}
+
+.title {
+    text-align: right;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+
+.profile-image {
+    width: 60%;
+    height: auto;
+    background-size: cover;
+    border-radius: 5px;
+    
+}
+
+
+/*Body*/
+
+h1 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+}
+
+.body-container {
+    padding: 5%;
+}
+
+.section-title {
+    padding: 0% 0% 5%;
+}
+
+
+/* Portfolio container */
+
+.portfolio-container {
+    padding: 10% 20%;
+    background-color: #adc9b7;
+}
+
+/* About container */
+
+.about-container {
+    padding: 10% 20%;
+}
+
+.list-group {
+    --bs-list-group-bg: transparent;
+}
+
+#textbox {
+    display:flex; 
+    flex-flow:row wrap;
+}
+
+.stars {
+    text-align: right;
+    width: 50%;
+    margin-bottom: 0;
+}
+
+.skills-text {
+    width: 50%;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+/* Contact container */
+
+.contact-container {
+    padding: 10% 20%;
+    background-color: #adc9b7;
+    text-align: right;
+}

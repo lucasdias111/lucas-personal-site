@@ -1,0 +1,75 @@
+body {
+    background-color: #F7ECDE;
+}
+
+h1 {
+    text-align: center;
+    padding: 7% 0%;
+    font-family: 'Righteous', cursive;
+    font-size: 4rem;
+    color: #993B1C;
+    text-shadow: 2px 2px 0px #beb8ab, 4px 4px 0px rgba(0,0,0,0.25);
+}
+
+h4 {
+    font-family: 'Raleway', sans-serif;
+}
+
+.header {
+    background-color: #9ED2C6;
+}
+
+.main-container {
+    background-color: #FEC260;
+    height: 500px;
+    width: 500px;
+    margin-top: 7%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.prompt-text {
+    text-align: center;
+    padding: 3%;
+}
+
+.form-container {
+    width: 25%;
+    background-color: #F9F5EB;
+    border-radius: 7px;
+    text-align: center;
+    height: 50%;
+    padding: 2%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.form-group {
+    padding: 0% 0% 2%;
+}
+
+.form-title {
+    font-size: 1.5rem;
+}
+
+.submit-btn {
+    padding-top: 3%;
+}
+
+.playlist {
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.d-flex {
+    margin-top: 0%;
+}
+
+.spinner-border {
+    display: none;
+}
+
+.btn-sm {
+    margin-top: .5%;
+}

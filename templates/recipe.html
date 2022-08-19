@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<head>
+    <link href="/static/css/recipe-entry-styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <a href=" {{ url_for('recipe_finder') }} " type="button" class="btn btn-sm btn-outline-dark back-btn"><i class="fa-solid fa-arrow-left"></i> Search for another recipe</a>
+
+    <div class="container-fluid title-container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <h1>Recipe <br> Finder</h1>
+            </div>
+            <div class="col-auto">
+                <i class="fa-solid fa-kitchen-set fa-4x"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row header-row">
+            <div class="col-8" style="text-align:center">
+                <img class="recipe-image" src="{{ recipe['image'] }}" alt="">
+                <h2 class="title"> {{ recipe['title'] }} </h2>
+            </div>
+            <div class="col-2 recipe-info">
+                <h4 class="recipe-info-title">Recipe info</h4>
+                <table class="table recipe-info-table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Vegetarian</th>
+                            <td>
+                                {% if recipe['vegetarian'] == true %}
+                                Yes
+                                {% elif recipe['vegetarian'] == false %}
+                                No
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Vegan</th>
+                            <td>
+                                {% if recipe['vegan'] == true %}
+                                Yes
+                                {% elif recipe['vegan'] == false %}
+                                No
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gluten Free</th>
+                            <td>
+                                {% if recipe['glutenFree'] == true %}
+                                Yes
+                                {% elif recipe['glutenFree'] == false %}
+                                No
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Dish type</th>
+                            <td colspan="1">
+                                {% for dish in recipe['dishTypes'] %}
+                                {{ dish.title() }}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Cooking time</th>
+                            <td colspan="1">{{ recipe['readyInMinutes'] }} minutes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Servings</th>
+                            <td colspan="1">{{ recipe['servings'] }} persons</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row instructions-row justify-content-center">
+        <div class="col-3">
+            <h2>Ingredients</h2>
+            <table class="table ingredients-table">
+                <tbody>
+                    {% for ingredient in recipe.extendedIngredients %}
+                    <tr>
+                        <td>{{ ingredient.original }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-6">
+            <h2>Instructions</h2>
+            <table class="table">
+                <tbody>
+                    {% for step in instructions[0]['steps'] %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ step.step }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

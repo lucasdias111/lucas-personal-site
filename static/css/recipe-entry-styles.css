@@ -1,0 +1,87 @@
+body {
+    background-color: #C1D5A4;
+}
+
+h1 {
+    text-align: right;
+    color: #AC4425;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2rem;
+}
+
+.title-container {
+    padding-top: 2%;
+}
+
+.fa-kitchen-set {
+    text-align: left;
+    color: #AC4425;
+}
+
+hr {
+    margin: 5% 0%;
+    border-width: 15px;
+    border-style: dotted;
+    border-top: 0;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.back-btn {
+    margin-top: .5%;
+    margin-left: .5%;
+}
+
+/* Header  */
+
+.header-row {
+    margin: 5%;
+}
+
+.title {
+    font-family: 'Josefin Sans', sans-serif;
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 5%;
+    font-size: 3rem;
+}
+
+.recipe-image {
+    max-width: 40%;
+    height: auto;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* Recipe info */
+
+.recipe-info {
+    background-color: rgb(94, 117, 93);
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.recipe-info-table {
+    color: #FFF5E1;
+}
+
+.recipe-info-title {
+    color: #FFF5E1;
+}
+
+/* Instructions and recipe */
+
+.instructions-row {
+    background-color: #FFF5E1;
+    width: 60%;
+    margin: 0 auto;
+    padding: 5% 0%;
+    margin-bottom: 5%;
+}
+
+.ingredients-table {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #C1D5A4;
+}
