@@ -5,10 +5,16 @@ from bs4 import BeautifulSoup
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import datetime as dt
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv("getenv.env")
+SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
 
 # Spotify constants setup
-CLIENT_ID = "35e5a500bb7e4e2883bc4ea926e2bf10"
-CLIENT_SECRET = "158f5396855347fdb1290a73f36bc79e"
+CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
+CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
 REDIRECT_URI = "http://example.com"
 
 # Lists for WTForms
@@ -62,7 +68,7 @@ def generate_playlist(year_date, month_date, day_date):
         client_secret=CLIENT_SECRET,
         show_dialog=True,
         cache_path="token.txt",
-        username="avwsbmlqmv1aw750r73mas3bu"
+        username=os.getenv("SPOTIFY_USERNAME")
     )
     )
 
@@ -90,6 +96,6 @@ def generate_playlist(year_date, month_date, day_date):
     date_string = date_raw.strftime("%B %d, %Y")
 
     # Create playlist and add each item from the song_uri list to the playlist
-    playlist = sp.user_playlist_create(user=user_id, name=f"{date_string}", public=False)
+    playlist = sp.user_playlist_create(user=user_id, name=f"{date_string} - PlaylistTimemachine", public=False)
     sp.playlist_add_items(playlist_id=f"{playlist['id']}", items=song_uris, position=None)
     return playlist['id']

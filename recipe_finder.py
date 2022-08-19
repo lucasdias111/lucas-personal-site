@@ -2,6 +2,11 @@ import requests
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired
+from dotenv import load_dotenv
+import os
+
+load_dotenv("getenv.env")
+SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
 
 
 class RecipeSearchForm(FlaskForm):
@@ -19,7 +24,7 @@ class GetRecipeList():
     def __init__(self, ingredients, diet, allergies, meal_type):
         # Params and headers for spoonacular API
         header = {
-            "x-api-key": "26f190d703b14b4e9c5ed10eefe137d7"
+            "x-api-key": SPOONACULAR_API_KEY
         }
         params = {
             "instructionsRequired": "true",

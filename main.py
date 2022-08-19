@@ -2,14 +2,19 @@ from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from playlist_timemachine import PlaylistForm, PlaylistTimemachine
 from recipe_finder import RecipeSearchForm, GetRecipeList
+from dotenv import load_dotenv
+import os
 import json
 import requests
-import pprint
+
+load_dotenv("getenv.env")
+SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
+FLASK_KEY = os.getenv("FLASK_KEY")
 
 # Setup flask app
 app = Flask(__name__)
 Bootstrap(app)
-app.secret_key = "secret"
+app.secret_key = FLASK_KEY
 
 # Global variables
 recipe_string = ""
@@ -58,7 +63,7 @@ def process_user_info(ingredients_string):
 @app.route("/recipe/<int:id>", methods=["POST", "GET"])
 def show_recipe(id):
     header = {
-        "x-api-key": "26f190d703b14b4e9c5ed10eefe137d7"
+        "x-api-key": SPOONACULAR_API_KEY,
     }
     recipe_response = requests.get(f"https://api.spoonacular.com/recipes/{id}/information", headers=header)
     recipe = recipe_response.json()
