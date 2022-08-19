@@ -5,16 +5,12 @@ from bs4 import BeautifulSoup
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import datetime as dt
-from dotenv import load_dotenv
 import os
-
-
-load_dotenv(".env")
-SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
+from boto.s3.connection import S3Connection
 
 # Spotify constants setup
-CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
-CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
+CLIENT_ID = S3Connection(os.environ["SPOTIFY_CLIENT_ID"])
+CLIENT_SECRET = S3Connection(os.environ["SPOTIFY_CLIENT_SECRET"])
 REDIRECT_URI = "http://example.com"
 
 # Lists for WTForms

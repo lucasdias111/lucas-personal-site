@@ -2,12 +2,10 @@ import requests
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired
-from dotenv import load_dotenv
 import os
+from boto.s3.connection import S3Connection
 
-load_dotenv(".env")
-SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
-
+SPOONACULAR_API_KEY = S3Connection(os.environ["SPOONACULAR_API_KEY"])
 
 class RecipeSearchForm(FlaskForm):
     diet = SelectField('Veggie/Vegan', choices=["None", "Vegetarian", "Vegan", "Pescetarian"])
