@@ -24,7 +24,7 @@ class GetRecipeList():
 
         # Params and headers for spoonacular API
         header = {
-            "x-api-key": SPOONACULAR_API_KEY
+            "x-api-key": "26f190d703b14b4e9c5ed10eefe137d7"
         }
         params = {
             "instructionsRequired": "true",
