@@ -20,7 +20,7 @@ class GetRecipeList():
     def __init__(self, ingredients, diet, allergies, meal_type):
 
         load_dotenv(".env")
-        SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
+        SPOONACULAR_API_KEY = os.environ["SPOONACULAR_API_KEY"]
 
         # Params and headers for spoonacular API
         header = {
