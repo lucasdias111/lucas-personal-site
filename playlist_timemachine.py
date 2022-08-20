@@ -8,15 +8,6 @@ import datetime as dt
 from dotenv import load_dotenv
 import os
 
-
-load_dotenv(".env")
-SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
-
-# Spotify constants setup
-CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
-CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
-REDIRECT_URI = "http://example.com"
-
 # Lists for WTForms
 days_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
              "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
@@ -47,6 +38,11 @@ class PlaylistTimemachine:
 
 # Main query function for spotify
 def generate_playlist(year_date, month_date, day_date):
+    load_dotenv(".env")
+    # Spotify constants setup
+    CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
+    CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
+    REDIRECT_URI = "http://example.com"
 
     response = requests.get(f"https://www.officialcharts.com/charts/singles-chart/20150731/7501/")
     result = response.text
