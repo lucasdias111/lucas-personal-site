@@ -10,7 +10,7 @@ from boto.s3.connection import S3Connection
 
 load_dotenv(".env")
 SPOONACULAR_API_KEY = os.environ["SPOONACULAR_API_KEY"]
-FLASK_KEY = os.environ["FLASK_KEY"]
+FLASK_KEY = ""
 
 # Setup flask app
 app = Flask(__name__)
@@ -22,7 +22,6 @@ recipe_string = ""
 
 @app.route("/")
 def home():
-    app.logger.info("BITCHING")
     return render_template("index.html")
 
 
