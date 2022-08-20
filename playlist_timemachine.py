@@ -38,11 +38,13 @@ class PlaylistTimemachine:
 
 # Main query function for spotify
 def generate_playlist(year_date, month_date, day_date):
+
     load_dotenv(".env")
     # Spotify constants setup
     CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
     CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
     REDIRECT_URI = "http://example.com"
+    USERNAME = os.getenv("SPOTIFY_USERNAME")
 
     response = requests.get(f"https://www.officialcharts.com/charts/singles-chart/20150731/7501/")
     result = response.text
@@ -64,7 +66,7 @@ def generate_playlist(year_date, month_date, day_date):
         client_secret=CLIENT_SECRET,
         show_dialog=True,
         cache_path="token.txt",
-        username=os.getenv("SPOTIFY_USERNAME")
+        username=USERNAME,
     )
     )
 

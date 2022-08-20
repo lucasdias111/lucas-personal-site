@@ -19,12 +19,12 @@ class RecipeSearchForm(FlaskForm):
 class GetRecipeList():
     def __init__(self, ingredients, diet, allergies, meal_type):
 
-        load_dotenv("getenv.env")
+        load_dotenv(".env")
         SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
 
         # Params and headers for spoonacular API
         header = {
-            "x-api-key": "26f190d703b14b4e9c5ed10eefe137d7"
+            "x-api-key": SPOONACULAR_API_KEY
         }
         params = {
             "instructionsRequired": "true",
