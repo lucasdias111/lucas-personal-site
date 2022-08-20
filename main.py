@@ -45,9 +45,7 @@ def recipe_finder():
         diet = recipe_form.diet.data
         allergies = recipe_form.allergies.data
         meal_type = recipe_form.meal_type.data
-        response = GetRecipeList(diet=diet, ingredients=recipe_string, allergies=allergies, meal_type=meal_type).\
-            response
-        print(response.json())
+        response = GetRecipeList(diet=diet, ingredients=recipe_string, allergies=allergies, meal_type=meal_type).response
         food_results = response.json()['results']
         if food_results == "":
             return render_template("recipe-finder.html", form=recipe_form, results="no entries")
