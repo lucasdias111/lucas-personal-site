@@ -64,7 +64,7 @@ def process_user_info(ingredients_string):
 @app.route("/recipe/<int:id>", methods=["POST", "GET"])
 def show_recipe(id):
     header = {
-        "x-api-key": SPOONACULAR_API_KEY,
+        "x-api-key": "26f190d703b14b4e9c5ed10eefe137d7",
     }
     recipe_response = requests.get(f"https://api.spoonacular.com/recipes/{id}/information", headers=header)
     recipe = recipe_response.json()
