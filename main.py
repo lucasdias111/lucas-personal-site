@@ -22,6 +22,7 @@ recipe_string = ""
 
 @app.route("/")
 def home():
+    app.logger.info("BITCHING")
     return render_template("index.html")
 
 
