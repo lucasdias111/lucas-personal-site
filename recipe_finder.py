@@ -4,8 +4,6 @@ from wtforms import StringField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired
 from dotenv import load_dotenv
 import os
-import sys
-
 
 class RecipeSearchForm(FlaskForm):
     diet = SelectField('Veggie/Vegan', choices=["None", "Vegetarian", "Vegan", "Pescetarian"])
@@ -20,11 +18,11 @@ class RecipeSearchForm(FlaskForm):
 
 class GetRecipeList():
     def __init__(self, ingredients, diet, allergies, meal_type):
+
         load_dotenv("getenv.env")
         SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
+
         # Params and headers for spoonacular API
-        print(SPOONACULAR_API_KEY)
-        sys.stdout.flush()
         header = {
             "x-api-key": SPOONACULAR_API_KEY
         }

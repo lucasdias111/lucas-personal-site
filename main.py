@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import os
 import json
 import requests
+import logging
 
 load_dotenv(".env")
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
@@ -76,3 +77,6 @@ def show_recipe(id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+    gunicorn_logger = logging.getLogger('TEST TEST TEST')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
