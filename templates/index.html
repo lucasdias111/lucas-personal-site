@@ -39,10 +39,10 @@
     <section>
       <div class="container-fluid">
         <div class="row title-container">
-          <div class="col-6 title-col text-center">
-            <h2 class="title">I'm a software developer and historian of ideas</h2>
+          <div class="col-md-6 col-sm-12 title-col text-center">
+            <h1 class="title">I'm a software developer and historian of ideas</h1>
           </div>
-          <div class="col-4 title-col">
+          <div class="col-md-4 col-sm-12 title-col">
             <img class="profile-image" src="/static/img/IMG_6909-re.jpg" alt="">
           </div>
         </div>
@@ -54,12 +54,10 @@
   <section id="portfolio">
     <div class="container-fluid portfolio-container">
       <h1 class="section-title">Portfolio</h1>
-
-      <div class="row card-row">
-
+      <div class="row">
         <!-- Column 1 -->
-        <div class="col-4">
-          <div class="card" style="width: 18rem;">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card">
             <a href=" {{ url_for('playlist_time') }} "><img src="/static/img/timemachine.png" class="card-img-top" alt="..." href="{{ url_for('playlist_time') }}"></a>
             <div class="card-body">
               <h5 class="card-title">Playlist Timemachine</h5>
@@ -69,8 +67,8 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <div class="card" style="width: 18rem;">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card">
             <a href=" {{ url_for('recipe_finder') }} "><img src="static/img/recipefidner.png" class="card-img-top" alt="..." ></a>
             <div class="card-body">
               <h5 class="card-title">Recipe Finder</h5>

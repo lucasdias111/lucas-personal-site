@@ -6,13 +6,21 @@ body {
 
 .navbar {
     background-color: #94B49F;
-    padding: .5% 20%;
     font-family: 'Jost', sans-serif;
     font-weight: 700;
 }
 
 .navbar-brand {
     font-size: 2.5rem;
+    padding-left: 5%;
+}
+
+.navbar-collapse {
+    padding-right: 5%;
+}
+
+.navbar-toggler {
+    margin-right: 5%;
 }
 
 .navbar-container {
@@ -25,7 +33,7 @@ body {
 
 .title-container {
     height: 100%;
-    padding: 5% 0%;
+    padding: 8% 0%;
     display: flex;
     align-items: center;
 }
@@ -45,11 +53,37 @@ img {
 }
 
 .profile-image {
-    width: 60%;
+    width: 50%;
     height: auto;
     background-size: cover;
     border-radius: 5px;
-    
+    margin-left: 5%;
+}
+
+/* @media (min-width:768px) and (max-width:992px)  {
+    .title {
+        
+    }
+
+    .profile-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+} */
+
+@media (max-width:768px)  {
+    .title {
+        text-align: center;
+    }
+
+    .profile-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
 }
 
 
@@ -80,6 +114,10 @@ h2 {
 .portfolio-container {
     padding: 10% 20%;
     background-color: #adc9b7;
+}
+
+.card {
+margin: 5% 0%;
 }
 
 /* About container */
