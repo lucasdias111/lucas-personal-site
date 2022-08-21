@@ -46,7 +46,14 @@ def generate_playlist(year_date, month_date, day_date):
     REDIRECT_URI = "http://example.com"
     USERNAME = os.environ["SPOTIFY_USERNAME"]
 
-    response = requests.get(f"https://www.officialcharts.com/charts/singles-chart/20150731/7501/")
+    if len(month_date) == 1:
+        month_date = "0" + month_date
+    if len(day_date) == 1:
+        day_date = "0" + day_date
+
+    search_date = year_date + month_date + day_date
+
+    response = requests.get(f"https://www.officialcharts.com/charts/singles-chart/{search_date}/7501/")
     result = response.text
 
     soup = BeautifulSoup(result, "html.parser")
