@@ -86,9 +86,6 @@ def generate_playlist(year_date, month_date, day_date):
         if not a.isnumeric():
             artists_list.append(a)
 
-    print(titles_list)
-    print(artists_list)
-
     # Spotify API Setup
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
         scope="playlist-modify-private",
