@@ -39,8 +39,8 @@ class PlaylistTimemachine:
 # Main query function for spotify
 def generate_playlist(year_date, month_date, day_date):
 
-    load_dotenv(".env")
     # Spotify constants setup
+    load_dotenv(".env")
     CLIENT_ID = os.environ["SPOTIFY_CLIENT_ID"]
     CLIENT_SECRET = os.environ["SPOTIFY_CLIENT_SECRET"]
     REDIRECT_URI = "http://example.com"
@@ -51,19 +51,43 @@ def generate_playlist(year_date, month_date, day_date):
     if len(day_date) == 1:
         day_date = "0" + day_date
 
-    search_date = year_date + month_date + day_date
+    search_date = year_date + "-" + month_date + "-" + day_date
 
-    response = requests.get(f"https://www.officialcharts.com/charts/singles-chart/{search_date}/7501/")
+    response = requests.get(f"https://www.billboard.com/charts/hot-100/{search_date}")
     result = response.text
 
-    soup = BeautifulSoup(result, "html.parser")
+    # Iterate through the html site for both title and artists on Billboard hot 100
+    titles_soup = BeautifulSoup(result, "html.parser")
+    titles_list_search = titles_soup.find_all(name="li", class_="lrv-u-width-100p")
+    titles_soup2 = BeautifulSoup(str(titles_list_search), "html.parser")
+    titles_list_search2 = titles_soup2.find_all(name="ul", class_="lrv-a-unstyle-list lrv-u-flex lrv-u-height-100p lrv-u-flex-"
+                                                   "direction-column@mobile-max")
+    titles_soup3 = BeautifulSoup(str(titles_list_search2), "html.parser")
 
-    titles = soup.find_all(name="div", class_="title")
+    titles = titles_soup3.find_all(name="h3", id="title-of-a-story")
     titles_list = []
 
     for title in titles:
         t = "".join(line.strip() for line in title.getText().split("\n"))
         titles_list.append(t)
+
+    artists_soup = BeautifulSoup(result, "html.parser")
+    artists_list_search = artists_soup.find_all(name="li", class_="lrv-u-width-100p")
+    artists_soup2 = BeautifulSoup(str(artists_list_search), "html.parser")
+    artists_list_search2 = artists_soup2.find_all(name="ul", class_="lrv-a-unstyle-list lrv-u-flex lrv-u-height-100p lrv-u-flex-"
+                                                   "direction-column@mobile-max")
+    artists_soup3 = BeautifulSoup(str(artists_list_search2), "html.parser")
+
+    artists = artists_soup3.find_all(name="span")
+    artists_list = []
+
+    for artist in artists:
+        a = "".join(line.strip() for line in artist.getText().split("\n"))
+        if not a.isnumeric():
+            artists_list.append(a)
+
+    print(titles_list)
+    print(artists_list)
 
     # Spotify API Setup
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
@@ -89,8 +113,8 @@ def generate_playlist(year_date, month_date, day_date):
         titles_list.append(t)
 
     # For loop that creates URI's for each song in title_list - tries to except if IndexError occurs
-    for song in titles_list:
-        result = sp.search(q=f"track:{song} year:{year_date}", type="track")
+    for index, song in enumerate(titles_list):
+        result = sp.search(q=f"track:{song} artist:{artists_list[index]}", type="track")
         try:
             uri = result["tracks"]["items"][0]["uri"]
             song_uris.append(uri)
@@ -102,5 +126,5 @@ def generate_playlist(year_date, month_date, day_date):
 
     # Create playlist and add each item from the song_uri list to the playlist
     playlist = sp.user_playlist_create(user=user_id, name=f"{date_string} - PlaylistTimemachine", public=False)
-    sp.playlist_add_items(playlist_id=f"{playlist['id']}", items=song_uris, position=None)
+    sp.playlist_add_items(playlist_id=f"{playlist['id']}", items=song_uris)
     return playlist['id']
