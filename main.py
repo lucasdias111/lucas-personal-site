@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 import os
 import json
 import requests
-from boto.s3.connection import S3Connection
 
 load_dotenv(".env")
 SPOONACULAR_API_KEY = os.environ["SPOONACULAR_API_KEY"]
