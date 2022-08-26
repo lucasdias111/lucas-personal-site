@@ -124,5 +124,5 @@ def generate_playlist(year_date, month_date, day_date):
     # Create playlist and add each item from the song_uri list to the playlist
     playlist = sp.user_playlist_create(user=user_id, name=f"{date_string} - PlaylistTimemachine", public=False)
     sp.playlist_add_items(playlist_id=f"{playlist['id']}", items=song_uris)
-    print(playlist['id'])
+    print(playlist)
     return playlist['id']
