@@ -37,7 +37,7 @@
         </div>
         <div id="playlistFrame" class="playlist">
             {% if playlist %}
-            <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
+            <script type="javascript" src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
             {% endif %}
         </div>
 
@@ -50,7 +50,6 @@
         }
 
         window.onSpotifyIframeApiReady = (IFrameAPI) => {
-
                 var iframe = document.createElement("iframe");
                 iframe.src = "https://open.spotify.com/embed/playlist/{{playlist}}?utm_source=generator";
                 iframe.style.width = "100%";
@@ -59,8 +58,6 @@
                 iframe.frameBorder="0";
                 iframe.allow="autoplay; clipboard-write; encrypted-media; fullscreen; fullscreen; picture-in-picture";
                 document.querySelector('#playlistFrame').appendChild(iframe);
-
-
         };
 
     </script>
