@@ -35,10 +35,21 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <div id="playlistFrame" class="playlist">
-            {% if playlist %}
-            <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
-            {% endif %}
+        <div onload="createPlaylist" id="playlistFrame" class="playlist">
+        {% if playlist %}
+        <script type="text/javascript">
+            window.onload = function () {
+                var iframe = document.createElement("iframe");
+                iframe.src = "https://open.spotify.com/embed/playlist/{{playlist}}?utm_source=generator";
+                iframe.style.width = "100%";
+                iframe.style.height = "380px";
+                iframe.style.borderRadius = "12px";
+                iframe.frameBorder="0";
+                iframe.allow="autoplay; clipboard-write; encrypted-media; fullscreen; fullscreen; picture-in-picture";
+                document.querySelector('#playlistFrame').appendChild(iframe);
+            }
+        </script>
+        {% endif %}
         </div>
 
     </section>
@@ -49,8 +60,8 @@
             document.getElementsByClassName("d-flex")[0].style.marginTop = "5%";
         }
 
-        window.onSpotifyIframeApiReady = (IFrameAPI) => {
-
+        function createPlaylist () {
+                alert("test")
                 var iframe = document.createElement("iframe");
                 iframe.src = "https://open.spotify.com/embed/playlist/{{playlist}}?utm_source=generator";
                 iframe.style.width = "100%";
@@ -59,8 +70,6 @@
                 iframe.frameBorder="0";
                 iframe.allow="autoplay; clipboard-write; encrypted-media; fullscreen; fullscreen; picture-in-picture";
                 document.querySelector('#playlistFrame').appendChild(iframe);
-
-
         };
 
     </script>

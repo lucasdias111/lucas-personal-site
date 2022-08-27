@@ -32,7 +32,7 @@ def playlist_time():
         month_date = date_form.month.data
         year_date = date_form.year.data
         playlist = PlaylistTimemachine(year=year_date, month=month_date, day=day_date)
-        return render_template("playlist-timemachine.html", form=date_form, playlist=playlist.playlist['id'], playlist_link=playlist.playlist['external_urls']['spotify'])
+        return render_template("playlist-timemachine.html", form=date_form, playlist=playlist.playlist['id'], playlist_link=playlist.playlist['external_urls']['spotify'], playlist_uri=playlist.playlist['uri'])
     return render_template("playlist-timemachine.html", form=date_form, playlist=None, playlist_link=None)
 
 
