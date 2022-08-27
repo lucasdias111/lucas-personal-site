@@ -10,7 +10,8 @@
 <body>
     <section class="main">
         <div class="container-fluid header">
-            <a href=" {{ url_for('home') }} " type="button" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-arrow-left"></i> Back to frontpage</a>
+            <a href=" {{ url_for('home') }} " type="button" class="btn btn-sm btn-outline-dark"><i
+                    class="fa-solid fa-arrow-left"></i> Back to frontpage</a>
             <h1>Playlist Timemachine</h1>
         </div>
         <div class="container-fluid prompt-text">
@@ -36,20 +37,21 @@
             </div>
         </div>
         <div onload="createPlaylist" id="playlistFrame" class="playlist">
-        {% if playlist %}
-        <script type="text/javascript">
-            window.onload = function () {
-                var iframe = document.createElement("iframe");
-                iframe.src = "https://open.spotify.com/embed/playlist/{{playlist}}?utm_source=generator";
-                iframe.style.width = "100%";
-                iframe.style.height = "380px";
-                iframe.style.borderRadius = "12px";
-                iframe.frameBorder="0";
-                iframe.allow="autoplay; clipboard-write; encrypted-media; fullscreen; fullscreen; picture-in-picture";
-                document.querySelector('#playlistFrame').appendChild(iframe);
-            }
-        </script>
-        {% endif %}
+            {% if playlist %}
+            <script type="text/javascript">
+                window.onload = function () {
+                    sleep(10000)
+                    var iframe = document.createElement("iframe");
+                    iframe.src = "https://open.spotify.com/embed/playlist/{{playlist}}?utm_source=generator";
+                    iframe.style.width = "100%";
+                    iframe.style.height = "380px";
+                    iframe.style.borderRadius = "12px";
+                    iframe.frameBorder = "0";
+                    iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; fullscreen; picture-in-picture";
+                    document.querySelector('#playlistFrame').appendChild(iframe);
+                }
+            </script>
+            {% endif %}
         </div>
 
     </section>
@@ -60,17 +62,13 @@
             document.getElementsByClassName("d-flex")[0].style.marginTop = "5%";
         }
 
-        function createPlaylist () {
-                alert("test")
-                var iframe = document.createElement("iframe");
-                iframe.src = "https://open.spotify.com/embed/playlist/{{playlist}}?utm_source=generator";
-                iframe.style.width = "100%";
-                iframe.style.height = "380px";
-                iframe.style.borderRadius = "12px";
-                iframe.frameBorder="0";
-                iframe.allow="autoplay; clipboard-write; encrypted-media; fullscreen; fullscreen; picture-in-picture";
-                document.querySelector('#playlistFrame').appendChild(iframe);
-        };
+        function sleep(milliseconds) {
+            const date = Date.now();
+            let currentDate = null;
+            do {
+                currentDate = Date.now();
+            } while (currentDate - date < milliseconds);
+        }
 
     </script>
 </body>
