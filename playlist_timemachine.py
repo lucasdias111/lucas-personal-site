@@ -111,8 +111,8 @@ def generate_playlist(year_date, month_date, day_date):
 
     # For loop that creates URI's for each song in title_list - tries to except if IndexError occurs
     for index, song in enumerate(titles_list):
-        result = sp.search(q=f"track:{song} artist:{artists_list[index]}", type="track")
         try:
+            result = sp.search(q=f"track:{song} artist:{artists_list[index]}", type="track")
             uri = result["tracks"]["items"][0]["uri"]
             song_uris.append(uri)
         except IndexError:
