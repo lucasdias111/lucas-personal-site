@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
     <section class="main">
         <div class="container-fluid header">
             <a href=" {{ url_for('home') }} " type="button" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-arrow-left"></i> Back to frontpage</a>
@@ -36,12 +35,9 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <div class="playlist">
+        <div id="playlistFrame" class="playlist">
             {% if playlist %}
-            <iframe style="border-radius:12px"
-                src="https://open.spotify.com/embed/playlist/{{playlist}}?utm_source=generator" width="100%"
-                height="380" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-            <h4><a target=”_blank” href="{{playlist_link}}">Link to the playlist (opens spotify webbrowser)</a></h4>
+            <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
             {% endif %}
         </div>
 
@@ -52,6 +48,21 @@
             document.getElementsByClassName("spinner-border")[0].style.display = "block";
             document.getElementsByClassName("d-flex")[0].style.marginTop = "5%";
         }
+
+        window.onSpotifyIframeApiReady = (IFrameAPI) => {
+
+                var iframe = document.createElement("iframe");
+                iframe.src = "https://open.spotify.com/embed/playlist/{{playlist}}?utm_source=generator";
+                iframe.style.width = "100%";
+                iframe.style.height = "380px";
+                iframe.style.borderRadius = "12px";
+                iframe.frameBorder="0";
+                iframe.allow="autoplay; clipboard-write; encrypted-media; fullscreen; fullscreen; picture-in-picture";
+                document.querySelector('#playlistFrame').appendChild(iframe);
+
+
+        };
+
     </script>
 </body>
 
