@@ -115,7 +115,7 @@ def generate_playlist(year_date, month_date, day_date):
             result = sp.search(q=f"track:{song} artist:{artists_list[index]}", type="track")
             uri = result["tracks"]["items"][0]["uri"]
             song_uris.append(uri)
-        except IndexError:
+        except Exception:
             pass
 
     date_raw = dt.datetime(int(year_date), int(month_date), int(day_date))
