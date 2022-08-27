@@ -33,7 +33,7 @@ class PlaylistForm(FlaskForm):
 # Main class to reference in maim.py
 class PlaylistTimemachine:
     def __init__(self, year, month, day):
-        self.playlist_id = generate_playlist(year_date=year, month_date=month, day_date=day)
+        self.playlist = generate_playlist(year_date=year, month_date=month, day_date=day)
 
 
 # Main query function for spotify
@@ -124,4 +124,4 @@ def generate_playlist(year_date, month_date, day_date):
     # Create playlist and add each item from the song_uri list to the playlist
     playlist = sp.user_playlist_create(user=user_id, name=f"{date_string} - PlaylistTimemachine", public=False)
     sp.playlist_add_items(playlist_id=f"{playlist['id']}", items=song_uris)
-    return playlist['id']
+    return playlist
