@@ -115,7 +115,9 @@ def generate_playlist(year_date, month_date, day_date):
             result = sp.search(q=f"track:{song} artist:{artists_list[index]}", type="track")
             uri = result["tracks"]["items"][0]["uri"]
             song_uris.append(uri)
-        except Exception:
+        except spotipy.SpotifyException:
+            pass
+        except spotipy.SpotifyOauthError:
             pass
 
     date_raw = dt.datetime(int(year_date), int(month_date), int(day_date))
