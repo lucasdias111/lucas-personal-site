@@ -37,6 +37,7 @@ function toggleMenu(menuQuery) {
 
 $("#home-menu").click(function () {
     toggleMenu("home")
+    $(".navbar-toggler").click()
 })
 
 $("#portfolio-menu").click(function () {
@@ -56,6 +57,10 @@ $(".menu-close").click(function (){
 })
 
 $(".navbar-toggler").click(function (){
-    $(".title").fadeToggle();
-    $(".profile-image").fadeToggle();
+    if ($(".profile-image").is(":visible")) {
+        $(".profile-image").fadeOut();
+    }
+    else {
+        $(".profile-image").fadeIn();
+    }
 })
