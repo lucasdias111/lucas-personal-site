@@ -54,3 +54,8 @@ $("#about-menu").click(function () {
 $(".menu-close").click(function (){
     toggleMenu("home")
 })
+
+$(".navbar-toggler").click(function (){
+    $(".title").fadeToggle();
+    $(".profile-image").fadeToggle();
+})

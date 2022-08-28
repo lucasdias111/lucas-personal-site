@@ -183,6 +183,15 @@ h3 {
     padding: 2% 5%;
 }
 
+.card-text {
+    font-size: 1.1rem;
+}
+
+@media (max-width:768px) {
+    .card-text {
+        font-size: .7rem;
+    }
+}
 
 /* about section */
 
